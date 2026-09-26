@@ -28,8 +28,8 @@ export default function ResetPassword() {
     setLoading(true);
     try {
       await resetPassword(token, password);
-      setMessage('Contraseña actualizada correctamente');
-      setTimeout(() => navigate('/dashboard'), 2000);
+      setMessage('Contraseña actualizada correctamente. Redirigiendo al Dashboard');
+      setTimeout(() => navigate('/dashboard', { replace:true }), 1500);
     } catch (err) {
       setError(err.response?.data?.message || 'Error al restablecer la contraseña');
     } finally {

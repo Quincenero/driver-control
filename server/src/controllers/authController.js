@@ -156,6 +156,7 @@ export const updateProfile = async (req, res, next) => {
 // -------------------------------------------
 export const forgotPassword = async (req, res, next) => {
   try {
+    const resend = new Resend(process.env.RESEND_API_KEY);
     const { email } = req.body;
 
     const user = await User.findOne({ email });
