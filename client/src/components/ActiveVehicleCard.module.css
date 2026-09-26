@@ -1,0 +1,189 @@
+/* src/components/ActiveVehicleCard.module.css */
+.card {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.card.compact {
+  padding: var(--spacing-sm) var(--spacing-md);
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: color-mix(in srgb, var(--accent-green) 15%, transparent);
+  color: var(--accent-green);
+  flex-shrink: 0;
+}
+
+.body {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.year {
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.meta {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  margin-top: 0.15rem;
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.plate {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.dot {
+  color: var(--text-muted);
+  opacity: 0.5;
+}
+
+.odometer {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.btnManage,
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  padding: 0.4rem 0.85rem;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  flex-shrink: 0;
+}
+
+.btnManage {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+}
+
+.btnManage:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-green);
+  color: var(--text-primary);
+}
+
+.btnPrimary {
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  border: 1px solid var(--accent-green);
+}
+
+.btnPrimary:hover {
+  background: var(--accent-green-hover);
+}
+
+/* ---------- Empty state ---------- */
+.empty {
+  border-style: dashed;
+  background: transparent;
+}
+
+.emptyIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.emptyBody {
+  flex: 1;
+  min-width: 0;
+}
+
+.emptyBody p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.emptyBody small {
+  display: block;
+  margin-top: 0.15rem;
+  font-size: 0.72rem;
+  color: var(--text-muted);
+  line-height: 1.4;
+}
+
+/* ---------- Skeleton ---------- */
+.skeleton {
+  width: 100%;
+  height: 44px;
+  background: linear-gradient(
+    90deg,
+    var(--bg-hover) 0%,
+    var(--bg-active, var(--bg-hover)) 50%,
+    var(--bg-hover) 100%
+  );
+  background-size: 200% 100%;
+  border-radius: var(--radius-md);
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .btnManageLabel {
+    display: none;
+  }
+
+  .btnManage,
+  .btnPrimary {
+    padding: 0.4rem;
+  }
+
+  .empty {
+    flex-wrap: wrap;
+  }
+
+  .emptyBody {
+    min-width: 100%;
+  }
+}

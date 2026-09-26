@@ -1,0 +1,401 @@
+/* ============================================
+   1. VARIABLES GLOBALES
+   ============================================ */
+@import '../../styles/variables.css';
+
+/* ============================================
+   2. LAYOUT PRINCIPAL
+   ============================================ */
+.dashboardContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+.dashboardContent {
+  position: relative;
+}
+
+/* ============================================
+   3. HEADER
+   ============================================ */
+.dashboardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  padding: var(--spacing-md) var(--spacing-lg);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.pageTitle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+  flex-wrap: wrap;
+  min-width: 0;
+}
+
+.pageTitle h1 {
+  font-size: 1.15rem;
+  font-weight: 600;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.vehicleTag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  padding: 0.3rem 0.7rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+}
+
+.vehiclePlate {
+  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  padding-left: 0.4rem;
+  border-left: 1px solid var(--border-color);
+  margin-left: 0.2rem;
+  font-size: 0.72rem;
+}
+
+.vehicleCta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.78rem;
+  font-weight: 500;
+  padding: 0.35rem 0.8rem;
+  border-radius: var(--radius-full);
+  background: transparent;
+  color: var(--accent-green);
+  border: 1px solid var(--accent-green);
+  cursor: pointer;
+  transition: background 0.15s;
+  font-family: inherit;
+}
+
+.vehicleCta:hover {
+  background: color-mix(in srgb, var(--accent-green) 15%, transparent);
+}
+
+.vehicleCta:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+.headerRight {
+  display: flex;
+  gap: var(--spacing-sm);
+  flex-wrap: wrap;
+}
+
+.periodBtn {
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.4rem 1rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 0.8rem;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.periodBtn:hover {
+  border-color: var(--accent-green);
+  color: var(--text-primary);
+}
+
+.periodBtn:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+.periodBtn.active {
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  border-color: var(--accent-green);
+  font-weight: 600;
+}
+
+/* ============================================
+   4. REFETCH INDICATOR
+   ============================================ */
+.refetchBar {
+  position: absolute;
+  top: -0.5rem;
+  right: 0;
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  background: var(--bg-hover);
+  border: 1px solid var(--border-color);
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radius-full);
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* ============================================
+   5. MÉTRICAS (GRID)
+   ============================================ */
+.metricsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-xl);
+}
+
+/* ============================================
+   6. DOS COLUMNAS (Tabla + Gráfico)
+   ============================================ */
+.twoColumns {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.card {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  min-width: 0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+  gap: var(--spacing-sm);
+}
+
+.cardHeader h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.periodLabel {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* --- Tabla de viajes --- */
+.tableResponsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tripsTable {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  font-size: 0.8rem;
+}
+
+.tripsTable th {
+  text-align: left;
+  padding: 0.5rem 0.3rem;
+  color: var(--text-muted);
+  font-weight: 500;
+  border-bottom: 1px solid var(--border-color);
+  white-space: nowrap;
+}
+
+.tripsTable td {
+  padding: 0.5rem 0.3rem;
+  border-bottom: 1px solid var(--bg-hover);
+  white-space: nowrap;
+}
+
+.tripsTable tr:hover td {
+  background: var(--bg-hover);
+}
+
+.platformTag {
+  display: inline-block;
+  padding: 0.1rem 0.5rem;
+  background: var(--badge-bg);
+  color: var(--accent-blue);
+  border-radius: var(--radius-full);
+  font-size: 0.7rem;
+  font-weight: 500;
+}
+
+.amount {
+  font-weight: 600;
+  color: var(--accent-green);
+}
+
+/* --- Gráfico --- */
+.pieChartContainer {
+  height: 260px;
+  margin: 0 auto;
+}
+
+/* ============================================
+   7. ACCIONES RÁPIDAS
+   ============================================ */
+.quickActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.actionBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 1.2rem;
+  border-radius: var(--radius-full);
+  font-size: 0.85rem;
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+  font-family: inherit;
+}
+
+.actionBtn.primary {
+  background: var(--accent-green);
+  color: var(--bg-primary);
+}
+
+.actionBtn.primary:hover {
+  background: var(--accent-green-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(74, 222, 128, 0.3);
+}
+
+.actionBtn.secondary {
+  background: var(--bg-hover);
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.actionBtn.secondary:hover {
+  background: var(--bg-active);
+  border-color: var(--accent-green);
+}
+
+.actionBtn:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+/* ============================================
+   8. ESTADOS (loading / error / empty)
+   ============================================ */
+.loadingState,
+.errorState,
+.emptyState {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  color: var(--text-muted);
+}
+
+.loadingState span,
+.errorState span {
+  font-size: 1.8rem;
+}
+
+.loadingState p,
+.errorState p,
+.emptyState p {
+  margin: 0;
+  color: var(--text-primary);
+  font-weight: 500;
+}
+
+.errorState small,
+.emptyState small {
+  max-width: 420px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.emptyState {
+  padding: 1rem;
+}
+
+/* ============================================
+   9. RESPONSIVE
+   ============================================ */
+@media (max-width: 1024px) {
+  .twoColumns {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboardHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-sm);
+  }
+
+  .pageTitle {
+    justify-content: space-between;
+  }
+
+  .headerRight {
+    justify-content: center;
+  }
+
+  .metricsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .quickActions {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .metricsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pageTitle {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerRight {
+    width: 100%;
+  }
+
+  .periodBtn {
+    flex: 1;
+  }
+}

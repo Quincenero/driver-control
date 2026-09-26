@@ -1,0 +1,156 @@
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #0a0a0f;
+  padding: 2rem 1rem;
+}
+
+.loginCard {
+  max-width: 400px;
+  width: 100%;
+  background: #14141d;
+  border: 1px solid #2a2a3a;
+  border-radius: 16px;
+  padding: 2rem;
+  color: #e8edf2;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  background: linear-gradient(135deg, #4ade80, #60a5fa);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  margin: 0;
+}
+
+.header p {
+  color: #8892a0;
+  margin-top: 0.5rem;
+}
+
+.success {
+  background: rgba(74, 222, 128, 0.15);
+  border: 1px solid rgba(74, 222, 128, 0.3);
+  color: #4ade80;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.error {
+  background: rgba(248, 113, 113, 0.15);
+  border: 1px solid rgba(248, 113, 113, 0.3);
+  color: #f87171;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-bottom: 0.8rem;
+}
+
+.formGroup label {
+  font-size: 0.85rem;
+  color: #c8d0d8;
+  font-weight: 500;
+}
+
+.formGroup input {
+  padding: 0.6rem 0.8rem;
+  background: #1a1a2e;
+  border: 2px solid #2a2a3a;
+  border-radius: 8px;
+  color: #e8edf2;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+  width: 100%;
+}
+
+.formGroup input:focus {
+  outline: none;
+  border-color: #4ade80;
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+}
+
+.formGroup input::placeholder {
+  color: #5a6a7a;
+}
+
+.forgotPassword {
+  text-align: right;
+  margin-top: -0.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.forgotPassword a {
+  color: #8892a0;
+  font-size: 0.85rem;
+  text-decoration: none;
+}
+
+.forgotPassword a:hover {
+  color: #4ade80;
+  text-decoration: underline;
+}
+
+.submitBtn {
+  width: 100%;
+  padding: 0.8rem;
+  background: #4ade80;
+  color: #0a0a0f;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: #34d399;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(74, 222, 128, 0.3);
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  color: #8892a0;
+  font-size: 0.9rem;
+}
+
+.footer a {
+  color: #4ade80;
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}

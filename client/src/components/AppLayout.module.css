@@ -1,0 +1,239 @@
+/* src/components/AppLayout.module.css */
+.layout {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  display: flex;
+  flex-direction: column;
+}
+
+/* ---------- Topbar ---------- */
+.topbar {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(8px);
+}
+
+.topbarInner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0.6rem var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.burger {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.35rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.burger:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+/* ---------- Nav desktop ---------- */
+.navDesktop {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  flex: 1;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.navDesktop::-webkit-scrollbar {
+  display: none;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.45rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navLink:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.navLinkActive {
+  background: color-mix(in srgb, var(--accent-green) 18%, transparent);
+  color: var(--accent-green);
+}
+
+.navLinkActive:hover {
+  background: color-mix(in srgb, var(--accent-green) 25%, transparent);
+  color: var(--accent-green);
+}
+
+/* ---------- User area ---------- */
+.userArea {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.userBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.75rem;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  max-width: 180px;
+}
+
+.userBtn:hover {
+  background: var(--bg-hover);
+  border-color: var(--accent-green);
+  color: var(--text-primary);
+}
+
+.userBtnActive {
+  border-color: var(--accent-green);
+  color: var(--accent-green);
+}
+
+.userName {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.logoutBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem;
+  border-radius: var(--radius-full);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.logoutBtn:hover {
+  background: color-mix(in srgb, var(--accent-red, #f43f5e) 12%, transparent);
+  color: var(--accent-red, #f43f5e);
+  border-color: var(--accent-red, #f43f5e);
+}
+
+/* ---------- Main ---------- */
+.main {
+  flex: 1;
+}
+
+/* ---------- Nav mobile ---------- */
+.navMobile {
+  display: none;
+  flex-direction: column;
+  padding: var(--spacing-sm) var(--spacing-md) var(--spacing-md);
+  gap: 0.25rem;
+  border-top: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+}
+
+.navMobileLink {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+}
+
+.navMobileLink:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.navMobileLinkActive {
+  background: color-mix(in srgb, var(--accent-green) 18%, transparent);
+  color: var(--accent-green);
+}
+
+.navMobileLogout {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.7rem 0.85rem;
+  margin-top: 0.25rem;
+  border-radius: var(--radius-md);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--accent-red, #f43f5e);
+  background: transparent;
+  border: 1px solid var(--border-color);
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.navMobileLogout:hover {
+  background: color-mix(in srgb, var(--accent-red, #f43f5e) 12%, transparent);
+  border-color: var(--accent-red, #f43f5e);
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .navDesktop {
+    display: none;
+  }
+
+  .burger {
+    display: inline-flex;
+  }
+
+  .userName {
+    display: none;
+  }
+
+  .userBtn {
+    padding: 0.4rem;
+  }
+
+  .navMobile {
+    display: flex;
+  }
+}

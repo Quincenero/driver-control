@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <!-- Fondo opcional -->
+  <rect width="200" height="60" rx="12" fill="#14141d" />
+  
+  <!-- Icono del volante -->
+  <g transform="translate(12, 8)">
+    <circle cx="22" cy="22" r="14" stroke="#4ade80" stroke-width="2.5" fill="none"/>
+    <circle cx="22" cy="22" r="6" stroke="#4ade80" stroke-width="2"/>
+    <line x1="22" y1="8" x2="22" y2="14" stroke="#4ade80" stroke-width="2"/>
+    <line x1="22" y1="30" x2="22" y2="36" stroke="#4ade80" stroke-width="2"/>
+    <line x1="8" y1="22" x2="14" y2="22" stroke="#4ade80" stroke-width="2"/>
+    <line x1="30" y1="22" x2="36" y2="22" stroke="#4ade80" stroke-width="2"/>
+    <!-- Camino / carretera -->
+    <path d="M10 38 Q22 44, 34 38" stroke="#60a5fa" stroke-width="2" fill="none" stroke-dasharray="3 3"/>
+  </g>
+  
+  <!-- Texto -->
+  <text x="56" y="38" font-family="Inter, system-ui, sans-serif" font-weight="700" font-size="22" fill="#e8edf2">
+    Driver
+  </text>
+  <text x="56" y="38" font-family="Inter, system-ui, sans-serif" font-weight="300" font-size="22" fill="#4ade80" dx="70">
+    Control Pro
+  </text>
+</svg>

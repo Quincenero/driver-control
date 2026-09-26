@@ -1,0 +1,312 @@
+/* ============================================
+   1. IMPORTACIÓN DE VARIABLES GLOBALES
+   ============================================ */
+@import '../../styles/variables.css';
+
+/* ============================================
+   2. LAYOUT PRINCIPAL
+   ============================================ */
+.formContainer {
+  max-width: 720px;   
+  margin: 0 auto;
+  padding: var(--spacing-md);
+  min-height: 100vh;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+}
+
+/* ============================================
+   3. HEADER DE LA PÁGINA
+   ============================================ */
+.formHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.backBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: transparent;
+  border: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 0.4rem 0.9rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: inherit;
+  transition: all 0.2s;
+}
+
+.backBtn:hover {
+  border-color: var(--accent-green);
+  color: var(--text-primary);
+}
+
+.backBtn:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+.formTitle {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin: 0;
+  flex: 1;
+  text-align: right;
+}
+
+.formTitle span {
+  background: linear-gradient(135deg, #fbbf24, #f59e0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+/* ============================================
+   4. TARJETA DEL FORMULARIO
+   ============================================ */
+.formCard {
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+}
+
+/* ============================================
+   5. CAMPOS DEL FORMULARIO
+   ============================================ */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.formLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.optional {
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  text-transform: none;
+  letter-spacing: 0;
+  font-weight: 400;
+  margin-left: 0.3rem;
+}
+
+.formInput,
+.formSelect {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  background: var(--bg-hover);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  font-family: inherit;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.formInput:hover,
+.formSelect:hover {
+  border-color: var(--border-hover);
+}
+
+.formInput:focus,
+.formSelect:focus {
+  outline: none;
+  border-color: var(--accent-green);
+  background: var(--bg-active);
+  box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.15);
+}
+
+.formInput::placeholder {
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+/* Select custom arrow */
+.formSelect {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23888' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2.25rem;
+  cursor: pointer;
+}
+
+.formSelect option {
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+}
+
+/* Input de fecha/hora: fix del color del ícono nativo */
+.formInput[type='date'],
+.formInput[type='time'] {
+  color-scheme: dark;
+}
+
+/* ============================================
+   6. FILA DE DOS COLUMNAS (fecha + hora)
+   ============================================ */
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-md);
+}
+
+/* ============================================
+   7. MENSAJE DE ERROR
+   ============================================ */
+.formError {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 0.9rem;
+  background: rgba(244, 63, 94, 0.1);
+  border: 1px solid var(--accent-red, #f43f5e);
+  border-radius: var(--radius-md);
+  color: var(--accent-red, #f43f5e);
+  font-size: 0.8rem;
+  font-weight: 500;
+  animation: shake 0.3s ease-in-out;
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-4px); }
+  75% { transform: translateX(4px); }
+}
+
+/* ============================================
+   8. BOTONES
+   ============================================ */
+.formActions {
+  display: flex;
+  gap: var(--spacing-sm);
+  margin-top: var(--spacing-sm);
+}
+
+.submitBtn {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.2rem;
+  background: var(--accent-green);
+  color: var(--bg-primary);
+  border: none;
+  border-radius: var(--radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.submitBtn:hover:not(:disabled) {
+  background: var(--accent-green-hover, #22c55e);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(74, 222, 128, 0.3);
+}
+
+.submitBtn:focus-visible {
+  outline: 2px solid var(--accent-green);
+  outline-offset: 2px;
+}
+
+.submitBtn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Spinner dentro del botón */
+.spinner {
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(15, 15, 26, 0.3);
+  border-top-color: var(--bg-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.listSection {
+  margin-top: var(--spacing-xl);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-lg);
+}
+
+.listHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-md);
+}
+
+.listTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.listCount {
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+
+/* ============================================
+   9. RESPONSIVE
+   ============================================ */
+@media (max-width: 480px) {
+  .formContainer {
+    padding: var(--spacing-sm);
+  }
+
+  .formHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .formTitle {
+    text-align: center;
+    order: -1;
+  }
+
+  .backBtn {
+    justify-content: center;
+  }
+
+  .formCard {
+    padding: var(--spacing-md);
+  }
+
+  .formRow {
+    grid-template-columns: 1fr;
+  }
+}
