@@ -14,7 +14,7 @@ const api = axios.create({
   baseURL,
   timeout: 15000,
   headers: { Accept: 'application/json' },
-  // ⚠️ NO poner Content-Type acá: axios lo decide por el body
+  
 });
 
 // --- Request: inyecta token ---
