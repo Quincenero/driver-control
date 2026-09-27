@@ -23,14 +23,6 @@ export const protect = async (req, res, next) => {
       });
     }
 
-    // Si tu modelo tiene un campo "activo", puedes validar aquí:
-    if (user.activo === false) {
-      return res.status(401).json({
-        success: false,
-        message: 'Usuario desactivado',
-      });
-    }
-
     req.user = user;
     next();
   } catch (error) {

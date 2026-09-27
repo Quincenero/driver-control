@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cors from 'cors';
 import helmet from 'helmet';
 import rateLimit from 'express-rate-limit';
+import mongoose from 'mongoose';
 import connectDB from './config/db.js';
 import authRoutes from './routes/authRoutes.js';
 import tripRoutes from './routes/tripRoutes.js';
@@ -17,19 +18,27 @@ dotenv.config();
 
 const app = express();
 
+// ✅ Necesario en Render (está detrás de un proxy)
+app.set('trust proxy', 1);
+
 // Seguridad básica
 app.use(helmet());
-app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:5173',
-  credentials: true,
-}));
+app.use(
+  cors({
+    origin: process.env.FRONTEND_URL || 'http://localhost:5173',
+    credentials: true,
+  })
+);
 app.use(express.json({ limit: '1mb' }));
 
 // Rate limiting para rutas sensibles de auth
 const authLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutos
-  max: 20, // máximo 20 intentos
-  message: { success: false, message: 'Demasiados intentos, inténtalo más tarde' },
+  windowMs: 15 * 60 * 1000,
+  max: 20,
+  message: {
+    success: false,
+    message: 'Demasiados intentos, inténtalo más tarde',
+  },
 });
 app.use('/api/auth/login', authLimiter);
 app.use('/api/auth/register', authLimiter);
@@ -43,10 +52,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/health', (req, res) => {
+  const state = mongoose.connection.readyState;
   res.status(200).json({
     success: true,
     api: 'ok',
-    database: req.app.locals.dbReady ? 'connected' : 'disconnected',
+    database: state === 1 ? 'connected' : 'connecting',
   });
 });
 
@@ -59,7 +69,7 @@ app.use('/api/expenses', expenseRoutes);
 app.use('/api/vehicles', vehiclesRouter);
 app.use('/api/documents', documentsRouter);
 
-// Rutas inexistentes (404)
+// 404
 app.use((req, res) => {
   res.status(404).json({ success: false, message: 'Ruta no encontrada' });
 });
@@ -75,10 +85,14 @@ const startServer = async () => {
     app.locals.dbReady = true;
 
     app.listen(PORT, () => {
-      console.log(`🚀 Servidor corriendo en http://localhost:${PORT}`);
+      console.log(`🚀 Servidor corriendo en puerto ${PORT}`);
+      console.log(`🌍 Entorno: ${process.env.NODE_ENV || 'development'}`);
     });
   } catch (error) {
-    console.error('❌ El servidor no se inició porque MongoDB no está disponible.');
+    console.error(
+      '❌ El servidor no se inició porque MongoDB no está disponible.'
+    );
+    console.error(error);
     process.exit(1);
   }
 };

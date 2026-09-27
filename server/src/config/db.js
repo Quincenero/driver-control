@@ -2,7 +2,7 @@ import mongoose from 'mongoose';
 
 const connectDB = async () => {
   if (!process.env.MONGO_URI) {
-    throw new Error('MONGO_URI no está configurado en el archivo .env');
+    throw new Error('Falta la variable de entorno MONGO_URI');
   }
 
   mongoose.set('strictQuery', true);
@@ -12,7 +12,9 @@ const connectDB = async () => {
       serverSelectionTimeoutMS: 10000,
     });
 
-    console.log(`✅ MongoDB conectado: ${conn.connection.host}/${conn.connection.name}`);
+    console.log(
+      `✅ MongoDB conectado: ${conn.connection.host}/${conn.connection.name}`
+    );
     return conn;
   } catch (error) {
     console.error(`❌ Error de conexión a MongoDB: ${error.message}`);
