@@ -9,7 +9,7 @@ const fuelSchema = new mongoose.Schema({
   },
   tipo: {
     type: String,
-    enum: ['Nafta', 'Diesel', 'Eléctrico', 'GNC'],
+    enum: ['GNC', 'Nafta', 'Diesel', 'Eléctrico'],
     required: true,
     default: 'GNC',
   },

@@ -18,7 +18,7 @@ const localToday = () => {
 const FILTROS_DEFAULT = { periodo: 'hoy' };
 
 export default function FuelForm() {
-  const [tipo, setTipo] = useState('Nafta');
+  const [tipo, setTipo] = useState('GNC');
   const [total, setTotal] = useState('');
   const [lugarCarga, setLugarCarga] = useState('');
   const [fecha, setFecha] = useState(localToday);
@@ -61,6 +61,7 @@ export default function FuelForm() {
       });
       setTotal('');
       setLugarCarga('');
+      setTipo('GNC');
       refetch();
     } catch (err) {
       if (err.response?.status === 401) return;
@@ -114,9 +115,9 @@ export default function FuelForm() {
               value={tipo}
               onChange={(e) => setTipo(e.target.value)}
             >
-              <option value="Nafta">Nafta</option>
-              <option value="Diesel">Diesel</option>
               <option value="GNC">GNC</option>
+              <option value="Nafta">Nafta</option>
+              <option value="Diesel">Diesel</option>              
               <option value="Eléctrico">Eléctrico</option>
             </select>
           </div>
