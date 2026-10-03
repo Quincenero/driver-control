@@ -8,42 +8,42 @@ export const DOCUMENT_TYPES = {
     scope: 'vehicle',
     defaultPeriodicity: 'anual',
     defaultReminderDays: 30,
-    renewalUrl: '',
+    renewalUrl: 'https://www.suvtv.com.ar/turnos', // Turnos oficiales VTV CABA
   },
   taxi_license: {
     label: 'Licencia de taxi',
     scope: 'vehicle',
     defaultPeriodicity: 'anual',
     defaultReminderDays: 30,
-    renewalUrl: '',
+    renewalUrl: 'https://buenosaires.gob.ar/tramites/renovacion-de-licencia-de-conducir', // Trámite GCBA
   },
   driver_license: {
     label: 'Licencia de conducir',
     scope: 'user',
     defaultPeriodicity: 'anual',
     defaultReminderDays: 60,
-    renewalUrl: '',
+    renewalUrl: 'https://buenosaires.gob.ar/tramites/renovacion-de-licencia-de-conducir', // Trámite GCBA
   },
   insurance: {
     label: 'Seguro',
     scope: 'vehicle',
     defaultPeriodicity: 'mensual',
     defaultReminderDays: 15,
-    renewalUrl: '',
+    renewalUrl: 'https://www.argentina.gob.ar/superintendencia-de-seguros', // SSN (info y consultas)
   },
   gnc_sticker: {
     label: 'Oblea GNC',
     scope: 'vehicle',
     defaultPeriodicity: 'anual',
     defaultReminderDays: 30,
-    renewalUrl: '',
+    renewalUrl: 'https://www.enargas.gov.ar/secciones/gas-natural-comprimido/renovacion-obleas-gnc.php', // ENARGAS
   },
   hydraulic_test: {
     label: 'Prueba hidráulica',
     scope: 'vehicle',
     defaultPeriodicity: 'quinquenal',
     defaultReminderDays: 90,
-    renewalUrl: '',
+    renewalUrl: 'https://tallermec.com.ar', // Taller CV en CABA (ejemplo de taller habilitado)
   },
 };
 
