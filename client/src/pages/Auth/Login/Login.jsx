@@ -24,7 +24,17 @@ export default function Login() {
       await login(email, password);
       navigate('/dashboard');
     } catch (err) {
-      setError(err.response?.data?.message || 'Credenciales inválidas. Intenta de nuevo.');
+      if (err.code === 'ECONNABORTED' || err.message?.includes('timeout')) {
+        setError('El servidor está despertando. Esperá unos segundos e intentá de nuevo.');
+      } else if (!err.response) {
+        setError('No se pudo conectar con el servidor. Revisá tu conexión a internet.');
+      } else if (err.response.status === 401) {
+        setError(err.response.data?.message || 'Credenciales inválidas. Revisá tu correo y contraseña.');
+      } else if (err.response.status >= 500) {
+        setError('Hubo un problema en el servidor. Intentá de nuevo en unos minutos.');
+      } else {
+        setError(err.response.data?.message || 'No se pudo iniciar sesión. Intentá de nuevo.');
+      }
     } finally {
       setLoading(false);
     }

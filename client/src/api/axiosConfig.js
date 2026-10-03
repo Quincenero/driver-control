@@ -12,7 +12,7 @@ if (!baseURL) {
 
 const api = axios.create({
   baseURL,
-  timeout: 15000,
+  timeout: 45000,
   headers: { Accept: 'application/json' },
   
 });
