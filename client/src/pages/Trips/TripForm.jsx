@@ -5,6 +5,7 @@ import { ArrowLeft, Save, AlertCircle } from 'lucide-react';
 import api from '../../api/axiosConfig';
 import { useTrips } from '../../hooks/useTrips';
 import TripList from './TripList';
+import TripSummary from './TripSummary';
 import TripFilters from './TripFilters';
 import TripEditModal from './TripEditModal';
 import styles from './TripForm.module.css';
@@ -203,6 +204,8 @@ export default function TripForm() {
           onChange={setFiltros}
           onClear={() => setFiltros(FILTROS_DEFAULT)}
         />
+
+        <TripSummary trips={trips} filtros={filtros} />
 
         <TripList
           trips={trips}
