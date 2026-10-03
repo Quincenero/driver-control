@@ -179,6 +179,15 @@ documentSchema.virtual('needsAttention').get(function () {
 });
 
 documentSchema.pre('validate', function (next) {
+  // Auto-completar renewalUrl desde DOCUMENT_TYPES si viene vacía
+  if (!this.renewalUrl || !String(this.renewalUrl).trim()) {
+    const meta = DOCUMENT_TYPES[this.type];
+    if (meta?.renewalUrl) {
+      this.renewalUrl = meta.renewalUrl;
+    }
+  }
+
+  // Auto-calcular expiresAt
   if (
     !this.expiresAt &&
     this.issueDate &&
