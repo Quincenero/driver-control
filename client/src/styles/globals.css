@@ -32,3 +32,66 @@
 .loading-pulse {
   animation: pulse 1.5s ease-in-out infinite;
 }
+
+/* ============================================
+   MODO LECTURA CÓMODA (presbicia)
+   No cambia tamaños, solo contraste y peso.
+   ============================================ */
+
+.comfort-mode {
+  /* Texto más claro en todos los niveles */
+  --text-primary: #ffffff;
+  --text-secondary: #e8edf2;
+  --text-muted: #c8d0d8;
+
+  /* Bordes más visibles */
+  --border-color: #3a3a4a;
+  --bg-hover: #262640;
+}
+
+/* Números: más gruesos y alineados tabularmente */
+.comfort-mode [class*='amount'],
+.comfort-mode [class*='Amount'],
+.comfort-mode [class*='statValue'],
+.comfort-mode [class*='metricValue'],
+.comfort-mode [class*='breakdownValue'],
+.comfort-mode [class*='totalValue'] {
+  font-weight: 800 !important;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+/* Labels chicos: más peso y contraste */
+.comfort-mode [class*='statLabel'],
+.comfort-mode [class*='metricLabel'],
+.comfort-mode [class*='periodLabel'],
+.comfort-mode [class*='statusLabel'],
+.comfort-mode [class*='cardYear'],
+.comfort-mode [class*='subtitle'] {
+  font-weight: 600 !important;
+  color: var(--text-secondary) !important;
+  letter-spacing: 0.06em;
+}
+
+/* Tablas: más aire entre filas */
+.comfort-mode table td,
+.comfort-mode table th {
+  padding-top: 0.85rem !important;
+  padding-bottom: 0.85rem !important;
+}
+
+/* Inputs: texto más claro y borde más marcado */
+.comfort-mode input,
+.comfort-mode select,
+.comfort-mode textarea {
+  color: var(--text-primary);
+  border-color: #3a3a4a;
+  font-weight: 500;
+}
+
+/* Placeholders más legibles */
+.comfort-mode input::placeholder,
+.comfort-mode textarea::placeholder {
+  color: #8892a0;
+  opacity: 1;
+}

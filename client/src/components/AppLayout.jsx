@@ -14,6 +14,7 @@ import {
   Menu,
   X,
 } from 'lucide-react';
+import { ComfortModeToggle } from './ComfortModeToggle';
 import { useAuth } from '../hooks/useAuth';
 import logoImg from '../assets/logo.svg';
 import styles from './AppLayout.module.css';
@@ -60,7 +61,7 @@ export function AppLayout() {
           </button>
 
           <NavLink to="/dashboard" className={styles.logo}>
-            <img src={logoImg} alt="Taxi Control Pro" height={32} />
+            <img src={logoImg} alt="Driver Control Pro" height={32} />
           </NavLink>
 
           <nav className={styles.navDesktop} aria-label="Navegación principal">
@@ -82,6 +83,8 @@ export function AppLayout() {
           </nav>
 
           <div className={styles.userArea}>
+            <ComfortModeToggle />
+
             <NavLink
               to="/profile"
               className={({ isActive }) =>
@@ -137,6 +140,11 @@ export function AppLayout() {
               <User size={18} aria-hidden="true" />
               <span>Mi perfil</span>
             </NavLink>
+
+            {/* ✅ Modo lectura cómoda: va una sola vez, después del último link */}
+            <div className={styles.comfortWrapper}>
+              <ComfortModeToggle />
+            </div>
 
             <button
               type="button"
